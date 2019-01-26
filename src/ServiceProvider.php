@@ -9,6 +9,8 @@ namespace Qbhy\Easemob;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
+use Qbhy\Easemob\Kernel\AccessToken;
+use Qbhy\Easemob\Kernel\Api;
 
 class ServiceProvider implements ServiceProviderInterface
 {
@@ -16,6 +18,10 @@ class ServiceProvider implements ServiceProviderInterface
     {
         $pimple['api'] = function (Easemob $easemob) {
             return new Api($easemob);
+        };
+
+        $pimple['user'] = function (Easemob $easemob) {
+            return new User($easemob);
         };
 
         $pimple['access_token'] = function (Easemob $easemob) {

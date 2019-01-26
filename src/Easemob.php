@@ -8,12 +8,15 @@
 namespace Qbhy\Easemob;
 
 use Hanson\Foundation\Foundation;
+use Qbhy\Easemob\Kernel\AccessToken;
+use Qbhy\Easemob\Kernel\Api;
 
 /**
  * Class Easemob
  *
  * @property Api         $api
  * @property AccessToken $access_token
+ * @property User        $user
  *
  * @package Qbhy\Easemob
  */

@@ -5,10 +5,10 @@
  * Time: 下午3:07
  */
 
-namespace Qbhy\Easemob;
-
+namespace Qbhy\Easemob\Kernel;
 
 use Hanson\Foundation\AbstractAccessToken;
+use Qbhy\Easemob\Easemob;
 
 class AccessToken extends AbstractAccessToken
 {

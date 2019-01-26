@@ -5,9 +5,10 @@
  * Time: 下午3:08
  */
 
-namespace Qbhy\Easemob;
+namespace Qbhy\Easemob\Kernel;
 
 use Hanson\Foundation\AbstractAPI;
+use Qbhy\Easemob\Easemob;
 
 class Api extends AbstractAPI
 {
@@ -24,10 +25,12 @@ class Api extends AbstractAPI
      * @param string $url
      * @param array  $options
      *
-     * @return mixed
+     * @return array
      */
     public function request(string $method, string $url, array $options = [])
     {
+        $options['headers'] = array_merge($options['headers'] ?? [], ['Authorization' => 'Bearer ' . $this->app->access_token->getToken(),]);
+
         return @json_decode($this->getHttp()->request($method, $this->url($url), $options)->getBody()->__toString(), true);
     }
 

@@ -16,5 +16,8 @@
         "psr-4": {
             "Qbhy\\Easemob\\": "src"
         }
+    },
+    "require-dev": {
+        "illuminate/support": "5.5"
     }
 }
