@@ -1,0 +1,11 @@
+{
+    "name": "96qbhy/easemob",
+    "description": "环信PHPsdk",
+    "authors": [
+        {
+            "name": "qbhy",
+            "email": "96qbhy@gmail.com"
+        }
+    ],
+    "require": {}
+}
