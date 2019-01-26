@@ -7,5 +7,14 @@
             "email": "96qbhy@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "hanson/foundation-sdk": "^3.0",
+        "ext-json": ">=1.0",
+        "php": ">=7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Qbhy\\Easemob\\": "src"
+        }
+    }
 }
