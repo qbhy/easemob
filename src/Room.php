@@ -62,7 +62,7 @@ class Room extends Api
      */
     public function create(string $owner, string $name, string $description, array $optional = [])
     {
-        return $this->request('POST', 'chatrooms', array_merge(compact('name', 'owner', 'description'), $optional));
+        return $this->request('POST', 'chatrooms', ['json' => array_merge(compact('name', 'owner', 'description'), $optional)]);
     }
 
     /**
@@ -77,7 +77,7 @@ class Room extends Api
      */
     public function update(string $name, string $description, $maxusers)
     {
-        return $this->request('PUT', 'chatrooms', compact('name', 'description', 'maxusers'));
+        return $this->request('PUT', 'chatrooms', ['json' => compact('name', 'description', 'maxusers')]);
     }
 
     /**
