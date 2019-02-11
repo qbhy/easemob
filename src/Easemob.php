@@ -17,6 +17,7 @@ use Qbhy\Easemob\Kernel\Api;
  * @property Api         $api
  * @property AccessToken $access_token
  * @property User        $user
+ * @property Room        $room
  *
  * @package Qbhy\Easemob
  */
