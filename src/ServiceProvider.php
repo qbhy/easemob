@@ -28,6 +28,10 @@ class ServiceProvider implements ServiceProviderInterface
             return new Room($easemob);
         };
 
+        $pimple['message'] = function (Easemob $easemob) {
+            return new Message($easemob);
+        };
+
         $pimple['access_token'] = function (Easemob $easemob) {
             return new AccessToken($easemob);
         };

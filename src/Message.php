@@ -32,13 +32,14 @@ class Message extends Api
      * @param string $targetType
      * @param string $from
      * @param array  $msg
+     * @param array  $extras
      *
      * @return array
      */
-    public function send(string $from, array $targets, array $msg, string $targetType = Message::TARGET_USER)
+    public function send(string $from, array $targets, array $msg, string $targetType = Message::TARGET_USER, array $extras = [])
     {
         return $this->request('POST', 'messages', [
-            'json' => ['target' => $targets, 'target_type' => $targetType, 'from' => $from, 'msg' => $msg,]
+            'json' => ['target' => $targets, 'target_type' => $targetType, 'from' => $from, 'msg' => $msg, 'ext' => $extras]
         ]);
     }
 
@@ -51,12 +52,13 @@ class Message extends Api
      * @param array  $targets
      * @param array  $image
      * @param string $targetType
+     * @param array  $extras
      *
      * @return array
      */
-    public function sendImage(string $from, array $targets, array $image, string $targetType = Message::TARGET_USER)
+    public function sendImage(string $from, array $targets, array $image, string $targetType = Message::TARGET_USER, array $extras = [])
     {
-        return $this->send($from, $targets, array_merge(['type' => Message::IMAGE,], $image), $targetType);
+        return $this->send($from, $targets, array_merge(['type' => Message::IMAGE,], $image), $targetType, $extras);
     }
 
     /**
@@ -68,12 +70,13 @@ class Message extends Api
      * @param array  $targets
      * @param array  $audio
      * @param string $targetType
+     * @param array  $extras
      *
      * @return array
      */
-    public function sendAudio(string $from, array $targets, array $audio, string $targetType = Message::TARGET_USER)
+    public function sendAudio(string $from, array $targets, array $audio, string $targetType = Message::TARGET_USER, array $extras = [])
     {
-        return $this->send($from, $targets, array_merge(['type' => Message::AUDIO], $audio), $targetType);
+        return $this->send($from, $targets, array_merge(['type' => Message::AUDIO], $audio), $targetType, $extras);
     }
 
     /**
@@ -85,12 +88,50 @@ class Message extends Api
      * @param array  $targets
      * @param string $text
      * @param string $targetType
+     * @param array  $extras
      *
      * @return array
      */
-    public function sendText(string $from, array $targets, string $text, string $targetType = Message::TARGET_USER)
+    public function sendText(string $from, array $targets, string $text, string $targetType = Message::TARGET_USER, array $extras = [])
     {
-        return $this->send($from, $targets, ['type' => Message::TEXT, 'msg' => $text], $targetType);
+        return $this->send($from, $targets, ['type' => Message::TEXT, 'msg' => $text], $targetType, $extras);
+    }
+
+
+    /**
+     * 发送视频消息
+     *
+     * @link http://docs-im.easemob.com/im/server/basics/messages#%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%B6%88%E6%81%AF
+     *
+     * @param string $from
+     * @param array  $targets
+     * @param array  $video
+     * @param string $targetType
+     * @param array  $extras
+     *
+     * @return array
+     */
+    public function sendVideo(string $from, array $targets, array $video, string $targetType = Message::TARGET_USER, array $extras = [])
+    {
+        return $this->send($from, $targets, array_merge(['type' => Message::VIDEO], $video), $targetType, $extras);
+    }
+
+    /**
+     * 发送透传消息
+     *
+     * @link http://docs-im.easemob.com/im/server/basics/messages#%E5%8F%91%E9%80%81%E8%A7%86%E9%A2%91%E6%B6%88%E6%81%AF
+     *
+     * @param string $from
+     * @param array  $targets
+     * @param array  $msg
+     * @param string $targetType
+     * @param array  $extras
+     *
+     * @return array
+     */
+    public function sendCommand(string $from, array $targets, array $msg, string $targetType = Message::TARGET_USER, array $extras = [])
+    {
+        return $this->send($from, $targets, $msg, $targetType, $extras);
     }
 
 
